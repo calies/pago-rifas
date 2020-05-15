@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "typescript",
+			"tsconfig": "e2e/tsconfig.e2e.json",
+			"option": "watch",
+			"problemMatcher": [
+				"$tsc-watch"
+			],
+			"group": "build",
+			"label": "tsc: watch - e2e/tsconfig.e2e.json"
+		}
+	]
+}

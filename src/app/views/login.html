@@ -1,0 +1,41 @@
+<div id="header">
+	<img id="logo" src="/assets/imgs/logo.svg" alt="">
+</div>
+<div id="rifa-green-container">
+	<img src="/assets/imgs/rifa-login.svg" alt="">
+</div>
+<div class="general-container login-container" *ngIf="!loading && !forgot">
+	<form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+		<div id="main-text">
+			INGRESÁ<br>PARA COBRAR<br>TUS RIFAS
+		</div>
+		<div class="general-class-form">
+			<input placeholder="E-Mail" value="" name="mail" #mail="ngModel" [(ngModel)]="mailTxt">
+		  	<input placeholder="Contraseña" type="password" name="password" #password="ngModel" value="" [(ngModel)]="passTxt">
+		</div>
+		<div class="invalid-form">
+			{{message}}
+		</div>
+		<div class="general-btn green-btn" (click)="triggerSubmit()">
+			<div class="btn-text">INGRESAR</div>
+		</div>
+		<div class="general-btn" (click)="showForgot()">
+			<div class="btn-text">OLVIDÉ MI CONTRASEÑA</div>
+		</div>
+	</form>
+</div>
+<div class="center-container login-container" *ngIf="!loading && forgot">
+		<div class="logo-container">
+			<img src="../../assets/imgs/logo.svg">
+		</div>
+		<div>
+			<mat-form-field>
+			  <input matInput required placeholder="E-Mail" value="" name="mail" #mail="ngModel" [(ngModel)]="forgetPassMail" autofocus>
+			</mat-form-field>
+		</div>
+		<div class="error-message warn-color">
+			{{message}}
+		</div>
+		<button class="general-btn green-btn" type="button" (click)="showLogin()" mat-raised-button>VOLVER</button>
+		<button class="general-btn white-btn" (click)="forgotPassword()" [disabled]="working" mat-raised-button>ENVIAR</button>
+</div>

@@ -1,1 +1,1208 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "theme";
+@font-face {
+    font-family: "Cocogoose";
+    src: url("assets/fonts/Cocogoose.otf");
+}
+
+html,
+body {
+    background-color: #ffffff;
+    margin: 0;
+}
+
+body {
+    background: url('/assets/imgs/bg.png') center center no-repeat;
+    background-size: cover;
+}
+
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#header {
+    background-color: #0F6946;
+    height: 90px;
+}
+
+img#logo {
+    height: 62.49px;
+    margin: 13.75px 0;
+    position: absolute;
+    width: 89.74px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+div#header.logged {
+    position: relative;
+}
+
+div#header.logged #logo {
+    transform: inherit;
+    left: 17px;
+}
+
+div#header.logged #rifa-img {
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    width: 150px;
+    bottom: 0;
+    transform: translate(-50%, 0);
+}
+
+div#rifa-green-container {
+    height: 140px;
+    background: url('/assets/imgs/bg-green.png') top center no-repeat;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+}
+
+div#rifa-green-container img {
+    height: 119px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 0;
+}
+
+.general-container.login-container form {
+    padding-top: 0 !important;
+}
+
+.selected-counter {
+    position: absolute;
+    right: 6%;
+    bottom: 18px;
+    font-family: Lato;
+    font-size: 16px;
+}
+
+.selected-counter div {
+    float: right;
+    background-color: white;
+    color: #006fc9;
+    font-family: Cocogoose;
+    text-align: center;
+    border-radius: 19px;
+    font-size: 13px;
+    line-height: 17px;
+    padding: 2px;
+    width: 18px;
+    margin-left: 11px;
+}
+
+.viaje-card {
+    margin-bottom: 10px;
+    background-color: #e2d7b030;
+}
+
+.viaje-card-enter {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.center-container,
+.general-container {
+    // position: absolute;
+    // left:  50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    // background-color: white;
+    // padding: 25px;
+    // border-radius: 4px;
+    margin: 0 auto;
+}
+
+.center-container form,
+.general-container form {
+    // position: absolute;
+    // left:  50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    padding: 50px;
+    border-radius: 4px;
+}
+
+.center-container.login-container,
+.general-container {
+    max-width: 700px;
+    width: 100%;
+    padding: 0 50px;
+}
+
+.center-container.login-container>form,
+.general-container>form {
+    height: auto;
+}
+
+div#main-text,
+div#main-text * {
+    font-family: Cocogoose;
+    line-height: 48.3px;
+    font-size: 48.3px;
+    color: #0F6946;
+    margin-top: 65px;
+    margin-bottom: 31px;
+}
+
+div#sub-title,
+.sub-title {
+    font-family: Lato;
+    color: #888888;
+    margin-bottom: 30px;
+    font-size: 19px;
+}
+
+.sub-title-bold {
+    font-weight: bold;
+}
+
+div#form-box #sub-title {
+    font-weight: bold;
+    margin-bottom: 22px;
+    margin-top: 20px;
+}
+
+.sub-title.sub-title-form {
+    margin-bottom: -9px !important;
+    margin-top: 30px;
+    font-size: 22px;
+    font-family: Cocogoose;
+    color: #0e6846;
+    text-transform: uppercase;
+}
+
+.selected-sorteo.rifa-sorteos-small-text {
+    text-align: left;
+    clear: initial;
+    font-size: 20px;
+}
+
+.spinner {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
+
+.loading-text.spinner {
+    top: 75%;
+    color: #333;
+    letter-spacing: 0.6px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 29px;
+}
+
+.mat-expansion-panel {
+    background-color: transparent;
+    box-shadow: none !important;
+}
+
+.mat-expansion-panel-body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.talon-item {
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid #9c9c9c;
+    margin-bottom: 4px;
+    background-color: white;
+    clear: both;
+    height: 19px;
+    padding: 11px 0px;
+    color: #9c9c9c;
+    font-weight: 600;
+}
+
+.talon-text {
+    float: left;
+    margin-left: 18px;
+}
+
+.talon-status {
+    float: right;
+    margin-right: 18px;
+    font-family: Cocogoose;
+    font-size: 12px;
+}
+
+.talon-item.pagada {
+    color: white;
+    background-color: #0F6946;
+    border: 1px solid #86D1AA;
+}
+
+.talon-item.pendiente.selected {
+    background-color: #C0DFFD;
+    color: #383838;
+    border: 1px solid #006FC9;
+}
+
+.talon-item.pendiente {
+    cursor: pointer;
+}
+
+.sorteos-selected {
+    float: right;
+}
+
+.rifa-container.selected-rifas-container {
+    min-height: 45px;
+    height: auto !important;
+    display: table;
+}
+
+div#total-pagar {
+    text-align: right;
+    font-size: 24px;
+    font-family: cocogoose;
+    margin-top: 22px;
+}
+
+div#form-box,
+#success-box {
+    border-top: 1px solid #dddddd;
+}
+
+div#success-box #total-pagar {
+    margin-bottom: 30px;
+}
+
+.general-class-form select {
+    width: 100% !important;
+    background-color: white !important;
+    // color: #7b7b7b !important;
+}
+
+.general-class-form input,
+.general-class-form select {
+    width: 94%;
+    clear: both;
+    height: 65px;
+    font-size: 27px;
+    font-family: Lato;
+    padding: 0 3%;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    margin-top: 13px;
+    font-weight: 300;
+}
+
+.general-class-form {
+    margin-top: 24px;
+    margin-bottom: 43px;
+}
+
+// .center-container.login-container > form input, .general-container > form input {
+//     width: 96%;
+//     height: 40px;
+//     margin-bottom: 13px;
+//     background-color: white;
+//     border-radius: 3px;
+//     border: 1px solid #d5d5d5;
+//     padding: 0 2%;
+//     font-family: Lato;
+//     font-size: 13px;
+//     letter-spacing: 0.1px;
+// }
+.invalid-form {
+    font-family: Lato;
+    font-size: 18px;
+    margin-bottom: 7px;
+    margin-top: -29px;
+    color: red;
+}
+
+.general-btn {
+    cursor: pointer;
+    width: 100%;
+    height: 24px;
+    margin-bottom: 8px;
+    border: 1px solid #0F6946;
+    border-radius: 6px;
+    padding: 32px 0;
+    color: #0F6946;
+}
+
+.btn-text {
+    font-family: Cocogoose;
+    text-align: center;
+    font-size: 19px;
+}
+
+.buyer-container .next-screen.general-btn.blue-btn {
+    height: 25px;
+}
+
+.next-screen {
+    color: white !important;
+    background-color: #0F6946;
+    height: 50px;
+    padding: 19px 0;
+}
+
+.green-btn {
+    background-color: #0F6946;
+    color: white;
+}
+
+.white-btn {
+    background-color: #fff;
+    color: #0F6946;
+}
+
+.blue-btn {
+    background-color: #006FC9;
+    color: #fff;
+}
+
+.next-screen.general-btn.blue-btn.left-btn {
+    text-align: left !important;
+    position: relative;
+}
+
+.next-screen.general-btn.blue-btn.left-btn .btn-text {
+    text-align: left;
+    padding-left: 6%;
+}
+
+.rifa-number {
+    font-family: Cocogoose;
+    color: #0F6946;
+    font-size: 38.89px;
+    line-height: 57px;
+    float: left;
+}
+
+.mat-expansion-panel-header {
+    padding-left: 0 !important;
+}
+
+.rifa-container {
+    // height: 54px;
+    width: 100%;
+    margin: 0 auto !important;
+    border-bottom: 1px solid #d5d5d5;
+    clear: both;
+    padding: 22px 0;
+    position: relative;
+}
+
+div#rifas-box {
+    height: 600px;
+    overflow: scroll;
+    border-top: 1px solid #a2a2a2;
+    border-bottom: 1px solid #a2a2a2;
+    margin-bottom: 35px;
+}
+
+.rifa-sorteos {
+    float: right;
+    position: absolute;
+    right: 72px;
+}
+
+.rifa-sorteos-small-text {
+    font-family: Lato;
+    font-size: 15px;
+    clear: both;
+    text-align: center;
+    color: #888888;
+    margin: 4px 0 1px;
+}
+
+.rifa-sorteos {
+    height: 55px;
+}
+
+.sorteo-item {
+    float: left;
+    font-size: 11px;
+    color: white;
+    background-color: #0F6946;
+    border-radius: 15px;
+    margin: 3px;
+    width: 19px;
+    text-align: center;
+    font-family: Cocogoose;
+    height: 18px;
+    line-height: 19px;
+}
+
+.sorteo-item.pendiente {
+    background-color: #9c9c9c;
+    color: white;
+}
+
+.sorteo-item.selected {
+    background-color: #C0DFFD;
+    color: #383838;
+}
+
+.form-inputs-container {
+    margin-bottom: 40px;
+}
+
+.login-container .error-message {
+    color: red;
+    font-family: Lato;
+}
+
+.main-panel {
+    height: auto !important;
+    margin-bottom: 50px !important;
+    .input-file {
+        clear: both;
+        margin-bottom: 16px;
+        label {
+            font-size: 13px !important;
+            color: rgba(0, 0, 0, 0.54);
+            display: block;
+            margin-bottom: 4px;
+        }
+    }
+}
+
+.progress-loader {
+    display: block;
+    clear: both;
+}
+
+.logo-container {
+    text-align: center;
+    img {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+.editor-container {
+    margin-bottom: 20px;
+    .label-editor {
+        margin-bottom: 10px;
+        color: rgba(0, 0, 0, 0.54);
+        font-size: 14px;
+    }
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+div#modal-excel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 25px;
+}
+
+button#btn-descargar-listado {
+    float: right;
+    margin-right: 10px;
+    .mat-icon.material-icons {
+        margin-bottom: 3px;
+        margin-left: 4px;
+    }
+}
+
+div#modal-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    .modal-footer {
+        bottom: 20px;
+        position: absolute;
+        right: 20px;
+        button {
+            margin-left: 10px;
+        }
+    }
+    .excel-element-checkbox {
+        width: 215px;
+        float: left;
+        margin: 3px 10px;
+    }
+    .excel-elements-title {
+        clear: both;
+        margin: 7px 0;
+        font-weight: 600;
+    }
+}
+
+.example-list {
+    width: 1000px;
+    max-width: 100%;
+    border: solid 1px #ccc;
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.example-box {
+    padding: 20px 10px;
+    border-right: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    font-size: 14px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.status-button {
+    margin-left: 20px;
+}
+
+x .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+    border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.list-title {
+    font-size: 17px;
+    margin: 13px 0 6px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.list-subtitle {
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 600;
+    color: #929292;
+    margin-top: 7px;
+}
+
+nav#navbar-top {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    >div {
+        float: left;
+    }
+    .logo-top {
+        width: 100px;
+        margin-right: 20px;
+        margin: 11px;
+        margin-left: 26px;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.main {
+    margin-top: 134px;
+    background-color: white;
+    padding: 24px 3%;
+    width: 90%;
+    margin-left: 2%;
+}
+
+.card.card-title {
+    height: 50px;
+    clear: both;
+    margin-bottom: 20px;
+    a {
+        float: right;
+    }
+    h3 {
+        float: left;
+    }
+}
+
+.table-container {
+    clear: both;
+}
+
+.interna-expansion-panel-header {
+    position: relative;
+    height: 25px;
+    a {
+        position: absolute;
+        right: 50px;
+    }
+}
+
+
+/* TABLES */
+
+.table {}
+
+.table {
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 0.01rem;
+    color: #212121;
+    background-color: #f5f5f5;
+    // Font Rendering
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+// Material Design typography
+// https://codepen.io/zavoloklom/pen/IkaFL
+.table h1 {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    letter-spacing: 0;
+    font-weight: 300;
+    color: #212121;
+    text-transform: inherit;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.table h2 {
+    font-size: 1.5rem;
+    line-height: 2.8rem;
+    letter-spacing: 0.01rem;
+    font-weight: 400;
+    color: #212121;
+    text-align: center;
+}
+
+// Material Design shadows
+//
+.shadow-z-1 {
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+    -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+}
+
+
+/* -- Material Design Table style -------------- */
+
+// Variables
+// ---------------------
+$table-header-font-weight: 400;
+$table-header-font-color: #757575;
+$table-cell-padding: 1rem;
+$table-condensed-cell-padding: $table-cell-padding/2;
+$table-bg: #fff;
+$table-bg-accent: #f5f5f5;
+$table-bg-hover: rgba(0,
+0,
+0,
+.12);
+$table-bg-active: $table-bg-hover;
+$table-border-color: #e0e0e0;
+// Mixins
+// -----------------
+// Tables
+//
+// -----------------
+// Baseline styles
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
+    background-color: $table-bg;
+    >thead,
+    >tbody,
+    >tfoot {
+        >tr {
+            -webkit-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+            >th,
+            >td {
+                text-align: left;
+                padding: $table-cell-padding;
+                vertical-align: top;
+                border-top: 0;
+                -webkit-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+        }
+    }
+    >thead>tr>th {
+        font-weight: $table-header-font-weight;
+        color: $table-header-font-color;
+        vertical-align: bottom;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+    }
+    >caption+thead,
+    >colgroup+thead,
+    >thead:first-child {
+        >tr:first-child {
+            >th,
+            >td {
+                border-top: 0;
+            }
+        }
+    }
+    >tbody+tbody {
+        border-top: 1px solid rgba(0, 0, 0, .12);
+    }
+    // Nesting
+    .table {
+        background-color: $table-bg;
+    }
+    // Remove border
+    .no-border {
+        border: 0;
+    }
+}
+
+// Condensed table w/ half padding
+.table-condensed {
+    >thead,
+    >tbody,
+    >tfoot {
+        >tr {
+            >th,
+            >td {
+                padding: $table-condensed-cell-padding;
+            }
+        }
+    }
+}
+
+// Bordered version
+//
+// Add horizontal borders between columns.
+.table-bordered {
+    border: 0;
+    margin: 0;
+    >thead,
+    >tbody,
+    >tfoot {
+        >tr {
+            >th,
+            >td {
+                border: 0;
+                border-bottom: 1px solid $table-border-color;
+            }
+        }
+    }
+    >thead>tr {
+        >th,
+        >td {
+            border-bottom-width: 2px;
+        }
+    }
+}
+
+#table .mat-sort-header-button {
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+#table td {
+    font-weight: 400;
+    text-align: center;
+}
+
+#table th {
+    padding: 1rem 0.5rem;
+}
+
+td.icon-cell .mat-icon-button,
+td.icon-cell {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+#table .icon-cell {
+    padding: 5px 0.5px !important;
+}
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+.table-striped {
+    >tbody>tr:nth-child(odd) {
+        >td,
+        >th {
+            background-color: $table-bg-accent;
+        }
+    }
+}
+
+// Hover effect
+//
+.table-hover {
+    >tbody>tr:hover {
+        >td,
+        >th {
+            background-color: $table-bg-hover;
+        }
+    }
+}
+
+// Responsive tables (vertical)
+//
+// Wrap your tables in `.table-responsive-vertical` and we'll make them mobile friendly
+// by vertical table-cell display. Only applies <768px. Everything above that will display normally.
+// For correct display you must add 'data-title' to each 'td'
+.table-responsive-vertical {
+    @media screen and (max-width: 768px) {
+        // Tighten up spacing
+        > .table {
+            margin-bottom: 0;
+            background-color: transparent;
+            >thead,
+            >tfoot {
+                display: none;
+            }
+            >tbody {
+                display: block;
+                >tr {
+                    display: block;
+                    border: 1px solid $table-border-color;
+                    border-radius: 2px;
+                    margin-bottom: $table-cell-padding;
+                    >td {
+                        background-color: $table-bg;
+                        display: block;
+                        vertical-align: middle;
+                        text-align: right;
+                    }
+                    >td[data-title]:before {
+                        content: attr(data-title);
+                        float: left;
+                        font-size: inherit;
+                        font-weight: $table-header-font-weight;
+                        color: $table-header-font-color;
+                    }
+                }
+            }
+        }
+        // Special overrides for shadows
+        &.shadow-z-1 {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            >.table>tbody>tr {
+                border: none;
+                -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+                -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+            }
+        }
+        // Special overrides for the bordered tables
+        >.table-bordered {
+            border: 0;
+            // Nuke the appropriate borders so that the parent can handle them
+            >tbody {
+                >tr {
+                    >td {
+                        border: 0;
+                        border-bottom: 1px solid $table-border-color;
+                    }
+                    >td:last-child {
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+        // Special overrides for the striped tables
+        >.table-striped {
+            >tbody>tr>td,
+            >tbody>tr:nth-child(odd) {
+                background-color: $table-bg;
+            }
+            >tbody>tr>td:nth-child(odd) {
+                background-color: $table-bg-accent;
+            }
+        }
+        // Special overrides for hover tables
+        >.table-hover {
+            >tbody {
+                >tr:hover>td,
+                >tr:hover {
+                    background-color: $table-bg;
+                }
+                >tr>td:hover {
+                    background-color: $table-bg-hover;
+                }
+            }
+        }
+    }
+}
+
+// CSS/LESS Color variations
+//
+// --------------------------------
+.table-striped.table-mc-red>tbody>tr:nth-child(odd)>td,
+.table-striped.table-mc-red>tbody>tr:nth-child(odd)>th {
+    background-color: #fde0dc;
+}
+
+.table-hover.table-mc-red>tbody>tr:hover>td,
+.table-hover.table-mc-red>tbody>tr:hover>th {
+    background-color: #f9bdbb;
+}
+
+@media screen and (max-width: 767px) {
+    .table-responsive-vertical .table-striped.table-mc-red>tbody>tr>td,
+    .table-responsive-vertical .table-striped.table-mc-red>tbody>tr:nth-child(odd) {
+        background-color: $table-bg;
+    }
+    .table-responsive-vertical .table-striped.table-mc-red>tbody>tr>td:nth-child(odd) {
+        background-color: #fde0dc;
+    }
+    .table-responsive-vertical .table-hover.table-mc-red>tbody>tr:hover>td,
+    .table-responsive-vertical .table-hover.table-mc-red>tbody>tr:hover {
+        background-color: $table-bg;
+    }
+    .table-responsive-vertical .table-hover.table-mc-red>tbody>tr>td:hover {
+        background-color: #f9bdbb;
+    }
+}
+
+th.icon-cell,
+td.icon-cell {
+    width: 44px;
+}
+
+
+/* END TABLES */
+
+@media screen and (min-width: 800px) {
+    body {
+        padding-bottom: 50px;
+    }
+    .talon-item {
+        margin-top: 4px;
+        font-size: 16px;
+        padding: 19px 0;
+        border-radius: 4px;
+    }
+    .talon-status {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .buyer-container .btn-text {
+        font-size: 23px !important;
+    }
+    .center-container.login-container,
+    .general-container {
+        width: 88%;
+        padding: 0 6%;
+    }
+    div#main-text * {
+        font-size: 33px !important;
+        line-height: 36px;
+    }
+    div#sub-title,
+    .sub-title {
+        font-size: 17px;
+    }
+    .rifa-container {
+        padding: 11px 0px;
+    }
+    .rifa-number {
+        font-size: 32px;
+    }
+    .fixed-buttons {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+    .fixed-buttons>div {
+        border-radius: 0;
+        margin: 0;
+    }
+    .invalid-form {
+        height: 42px;
+        border-top: 1px solid #ddd;
+        background-color: white;
+        margin-top: 10px;
+    }
+    .invalid-form {
+        padding-left: 6% !important;
+        padding-top: 9px !important;
+        margin-bottom: -10px !important;
+    }
+    div#rifas-box {
+        margin-bottom: 109px !important;
+        margin-top: 0px;
+    }
+    .next-screen {
+        padding: 11px 0;
+        line-height: 21px;
+        height: 37px;
+    }
+    .previous-screen.general-btn.ng-star-inserted {
+        padding: 17.5px 0;
+    }
+    div#main-text,
+    div#main-text * {
+        font-size: 35px;
+        line-height: 35px;
+    }
+    .general-container.login-container form {
+        padding: 0 !important;
+        padding-bottom: 20px !important;
+    }
+    .general-container.login-container .invalid-form {
+        border: none !important;
+    }
+    .general-container.login-container .general-class-form {
+        margin-bottom: 10px;
+    }
+    div#rifa-green-container {
+        height: 100px;
+    }
+    div#rifa-green-container img {
+        height: 85px;
+    }
+    .selected-counter {
+        bottom: 11px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div#header.logged {
+        height: 61px;
+    }
+    div#header.logged #logo {
+        height: auto;
+        width: 59px;
+        margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .left-btn .next-screen-text.btn-text {
+        font-size: 16px;
+    }
+    .selected-counter {
+        font-size: 14px;
+    }
+    .selected-counter div {
+        margin-left: 8px;
+    }
+    div#main-text,
+    div#main-text * {
+        font-size: 35px;
+        line-height: 35px;
+    }
+    .sorteo-item {
+        margin-right: 0px;
+        width: 18px;
+        height: 18px;
+        margin-left: 4px;
+    }
+    mat-panel-description.mat-expansion-panel-header-description {
+        width: 0px;
+    }
+    .rifa-sorteos {
+        right: 33px;
+    }
+    .rifa-number {
+        font-size: 25px;
+    }
+    mat-expansion-panel-header {
+        padding-right: 6px !important;
+    }
+    .selected-numero-rifa.rifa-number {
+        line-height: 43px;
+    }
+    .selected-sorteo.rifa-sorteos-small-text {
+        font-size: 17px;
+        margin-top: 9px;
+    }
+    div#total-pagar {
+        margin-top: 10px;
+        font-size: 19px;
+    }
+    .general-class-form input,
+    .general-class-form select {
+        height: 44px;
+        font-size: 19px;
+        margin-top: 7px;
+        border-radius: 3px;
+    }
+    div#header.logged #rifa-img {
+        width: 100px;
+    }
+    div#header.logged {
+        height: 45px;
+    }
+    div#header.logged #logo {
+        width: 50px;
+        margin: 5px 0;
+    }
+    .login-container .general-btn {
+        padding: 23px 0;
+        border-radius: 3px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .login-container div#main-text {
+        font-size: 28px;
+        line-height: 28px;
+        margin-top: 46px;
+        margin-bottom: 23px;
+    }
+    .login-container .invalid-form {
+        padding-left: 0 !important;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .next-screen.general-btn.blue-btn.left-btn .btn-text {
+        padding-left: 4%;
+    }
+    .selected-counter {
+        right: 4%;
+    }
+    .next-screen.general-btn.blue-btn.left-btn .btn-text {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,63 @@
+<div class="general-container">
+	<div class="card card-title">
+		<h3>{{title}}</h3>
+		<a mat-icon-button color="primary" routerLink="./new">
+				<mat-icon>add</mat-icon>
+		</a>
+	</div>
+	<mat-spinner ng-animate="'animate'" color="accent" class="spinner" *ngIf="loading"></mat-spinner>
+	<div class="table-container" *ngIf="!loading">
+		
+		<mat-form-field>
+		  	<input matInput [(ngModel)]="filterText" (keyup)="applyFilter()" placeholder="Filtro">
+		</mat-form-field>
+
+		<table matSort (matSortChange)="sortData($event)" *ngIf="!loaderBar" id="table" class="card table-bordered table table-hover table-mc-light-blue">
+			<tr>
+				<th mat-sort-header="itinerarioId">Id</th>
+				<th mat-sort-header="viajeName">Viaje</th>
+				<th mat-sort-header="itinerarioName">Nombre</th>
+				<th mat-sort-header="itinerarioPrice">Precio</th>
+				<th mat-sort-header="itinerarioStartDate">Inicio</th>
+				<th mat-sort-header="itinerarioFinishDate">Fin</th>
+				<th mat-sort-header="itinerarioSubgrupo">Subgrupo</th>
+				<th mat-sort-header="itinerarioPublico">Público</th>
+				<th class="icon-cell">Tramo</th>
+				<th class="icon-cell"></th>
+				<th class="icon-cell"></th>
+			</tr>
+			<tr *ngFor="let via of finalData">
+				<td>{{via.itinerarioId}}</td>
+				<td>{{via.viaje.viajeName}}</td>
+				<td>{{via.itinerarioName}}</td>
+				<td>{{via.itinerarioPrice}}</td>
+				<td>{{via.itinerarioStartdate.timestamp * 1000 | date:'dd/MM/y'}}</td>
+				<td>{{via.itinerarioFinishdate.timestamp * 1000 | date:'dd/MM/y'}}</td>
+				<td>{{via.itinerarioSubgrupo}}</td>
+				<td>{{via.itinerarioPublico}}</td>
+				<td class="icon-cell">
+					<a mat-icon-button color="primary" routerLink="./itinerario-tramo/{{via.itinerarioId}}">
+		  				<mat-icon>compare_arrows</mat-icon>
+					</a>
+				</td>
+				<td class="icon-cell">
+					<a mat-icon-button color="primary" routerLink="./edit/{{via.itinerarioId}}">
+		  				<mat-icon>mode_edit</mat-icon>
+					</a>
+				</td>
+				<td class="icon-cell">
+					<a mat-icon-button color="warn" (click)="delete(via.itinerarioId)">
+		  				<mat-icon>delete</mat-icon>
+					</a>
+				</td>
+			</tr>
+		</table>
+		<mat-paginator class="card" [length]="length"
+					  [pageSize]="pageSize"
+		              [pageSizeOptions]="pageSizeOptions"
+		              (page)="pageEvent = $event; getFinalData()">
+		</mat-paginator>
+	</div>
+</div>
+
+

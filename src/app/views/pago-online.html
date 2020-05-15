@@ -1,0 +1,72 @@
+<div id="header" class="logged">
+    <img id="logo" src="/assets/imgs/logo.svg">
+    <img id="rifa-img" src="/assets/imgs/rifa.png">
+</div>
+<div class="general-container buyer-container">
+    <div class="spinner">
+        <mat-spinner ng-animate="'animate'" color="accent" *ngIf="loading && !loadingGeopay"></mat-spinner>
+    </div>
+    <div class="spinner spinner-geopay">
+        <mat-spinner ng-animate="'animate'" color="accent" *ngIf="loading && loadingGeopay"></mat-spinner>
+    </div>
+    <div class="loading-text spinner" *ngIf="loading && loadingGeopay">
+        Te estamos redirigiendo al método de pago Geocom...
+    </div>
+    <div class="sub-container" *ngIf="!loading">
+        <div id="main-text">
+            <p *ngIf="currentScreen == 1">
+                PAGAR RIFA DE<br>{{pasajeroName.toLocaleUpperCase()}} {{pasajeroLastname.toLocaleUpperCase()}}.
+            </p>
+            <p *ngIf="currentScreen == 2">
+                GRACIAS POR AYUDAR<br>EN ESTE VIAJE
+            </p>
+        </div>
+        <div class="sub-title" *ngIf="currentScreen == 1">
+            Rifas a pagar:
+        </div>
+        <div id="form-box" *ngIf="currentScreen == 1">
+            <div *ngFor="let rif of rifas" class="rifa-container selected-rifas-container">
+                <div class="selected-numero-rifa rifa-number">{{rif[0].talonNumero}}</div>
+                <div class="sorteos-selected">
+                    <div *ngFor="let talon of rif" class="selected-sorteo rifa-sorteos-small-text">Sorteo del <span>{{talon.talonFechasorteo.timestamp * 1000 | date:'dd/MM/y'}}</span>: USD 20</div>
+                </div>
+            </div>
+            <div id="total-pagar">TOTAL A PAGAR: USD {{ totalPagar }}</div>
+            <div class="sub-title sub-title-form" *ngIf="currentScreen == 1">
+                Confirma si tus datos son correctos:
+            </div>
+            <div id="comprador-form" class="general-class-form">
+                <input placeholder="Nombre" name="comprador-name" [(ngModel)]="comprador.name">
+                <input placeholder="Apellido" name="comprador-lastname" [(ngModel)]="comprador.lastName">
+                <input placeholder="Mail" name="comprador-mail" [(ngModel)]="comprador.email">
+                <input placeholder="Teléfono" name="comprador-phone" [(ngModel)]="comprador.phone">
+                <select [(ngModel)]="comprador.department" placeholder="Departamento" name="comprador-department">
+					<option disabled hidden style='display: none' value="null">Departamento</option>
+					<option value="Artigas">Artigas</option>
+					<option value="Canelones">Canelones</option>
+					<option value="Cerro Largo">Cerro Largo</option>
+					<option value="Colonia">Colonia</option>
+					<option value="Durazno">Durazno</option>
+					<option value="Flores">Flores</option>
+					<option value="Florida">Florida</option>
+					<option value="Lavalleja">Lavalleja</option>
+					<option value="Maldonado">Maldonado</option>
+					<option value="Montevideo">Montevideo</option>
+					<option value="Paysandú">Paysandú</option>
+					<option value="Río Negro">Río Negro</option>
+					<option value="Rivera">Rivera</option>
+					<option value="Rocha">Rocha</option>
+					<option value="Salto">Salto</option>
+					<option value="San José">San José</option>
+					<option value="Soriano">Soriano</option>
+					<option value="Tacuarembó">Tacuarembó</option>
+					<option value="Treinta y Tres">Treinta y Tres</option>
+				</select>
+            </div>
+            <div class="invalid-form" *ngIf="invalidForm">{{errorTxt}}</div>
+            <div *ngIf="currentScreen == 1" class="next-screen general-btn blue-btn" (click)="initPayment()">
+                <div class="next-screen-text btn-text">PAGAR</div>
+            </div>
+        </div>
+    </div>
+</div>

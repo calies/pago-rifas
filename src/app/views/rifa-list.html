@@ -1,0 +1,138 @@
+<div class="spinner">
+	<mat-spinner ng-animate="'animate'" color="accent" *ngIf="loading"></mat-spinner>
+</div>
+<div class="general-container">
+	<div *ngIf="!loading">
+		<div id="main-text">
+			<p *ngIf="currentScreen == 1">
+				HOLA,<br>{{pasajeroName.toLocaleUpperCase()}} {{pasajeroLastName.toLocaleUpperCase()}}.	
+			</p>
+			<p *ngIf="currentScreen == 2">
+				ENVIAR LINK<br>DE PAGO
+			</p>
+			<p *ngIf="currentScreen == 3">
+				EL LINK DE PAGO<br>FUE ENVIADO<br>AL COMPRADOR
+			</p>
+		</div>
+		<div id="sub-title" *ngIf="currentScreen == 1">
+			Seleccioná las rifas a pagar:
+		</div>
+		<div id="rifas-box" *ngIf="currentScreen == 1">
+			<mat-accordion>
+			  	<mat-expansion-panel *ngFor="let talones of rifas"  class="rifa-container">
+				    <mat-expansion-panel-header>
+				      	<mat-panel-title>
+				        	<div class="rifa-number">
+				        		{{ talones[0].talonNumero }}
+				        	</div>
+				     	</mat-panel-title>
+				      	<mat-panel-description>
+				        	<div class="rifa-sorteos">
+	        					<div class="rifa-sorteos-small-text">Sorteos</div>
+								<div class="sorteo-item"
+										*ngFor="let tal of talones; let i = index;"
+									 	[class.pagada]="tal.talonEstado != 'Pendiente de Pago'" 
+										[class.pendiente]="tal.talonEstado == 'Pendiente de Pago'" 
+										[class.selected]="tal.selected">
+	        						{{ i+1 }}
+	        					</div>
+	        				</div>
+				      </mat-panel-description>
+				    </mat-expansion-panel-header>
+				    
+					<div class="talon-item" 
+						[class.pagada]="tal.talonEstado != 'Pendiente de Pago'" 
+						[class.pendiente]="tal.talonEstado == 'Pendiente de Pago'" 
+						[class.selected]="tal.selected" 
+						*ngFor="let tal of talones; let i = index;" 
+						(click)="selectTalon( tal )">
+				    	<div class="talon-text">Sorteo {{ i+1 }}</div>
+						<div *ngIf="tal.talonEstado == 'Pendiente de Pago'" class="talon-status">SIN PAGAR</div>
+						<div *ngIf="tal.talonEstado != 'Pendiente de Pago'" class="talon-status">PAGADA</div>
+				    </div>
+			  	</mat-expansion-panel>
+			</mat-accordion>
+		</div>
+		<div class="sub-title sub-title-bold" *ngIf="currentScreen == 2">
+			Resumen de las rifas a enviar al comprador para que realice el pago:
+		</div>
+		<div class="sub-title sub-title-bold" *ngIf="currentScreen == 3">
+			Te enviaremos un mail cuando el comprador realice el pago.
+		</div>
+		<div id="form-box" *ngIf="currentScreen == 2">
+			<div *ngFor="let rif of selectedRifas.rifas"  class="rifa-container selected-rifas-container">
+				<div class="selected-numero-rifa rifa-number">{{rif.numeroRifa}}</div>
+				<div class="sorteos-selected">
+					<div *ngFor="let talon of rif.item.talones" class="selected-sorteo rifa-sorteos-small-text">Sorteo {{talon.sorteoNumero}}: USD 20</div>
+				</div>
+			</div>
+			<div id="total-pagar">TOTAL: USD {{ selectedRifas.totalPagar }}</div>
+			<div id="sub-title" *ngIf="currentScreen == 2">
+				Ingresa los datos del comprador:
+			</div>
+			<div id="comprador-form" class="general-class-form">
+				<input placeholder="Nombre" name="comprador-name" [(ngModel)]="comprador.compradorName">
+				<input placeholder="Apellido" name="comprador-lastname" [(ngModel)]="comprador.compradorLastName">
+				<input placeholder="Mail" name="comprador-mail" [(ngModel)]="comprador.compradorMail">
+				<input placeholder="Teléfono" name="comprador-phone" [(ngModel)]="comprador.compradorPhone">
+				<select [(ngModel)]="comprador.compradorDepartment" placeholder="Departamento" name="comprador-department">
+					<option selected disabled hidden style='display: none' value=''>Departamento</option>
+					<option value="">No lo sé</option>
+					<option value="Artigas">Artigas</option>
+					<option value="Canelones">Canelones</option>
+					<option value="Cerro Largo">Cerro Largo</option>
+					<option value="Colonia">Colonia</option>
+					<option value="Durazno">Durazno</option>
+					<option value="Flores">Flores</option>
+					<option value="Florida">Florida</option>
+					<option value="Lavalleja">Lavalleja</option>
+					<option value="Maldonado">Maldonado</option>
+					<option value="Montevideo">Montevideo</option>
+					<option value="Paysandú">Paysandú</option>
+					<option value="Río Negro">Río Negro</option>
+					<option value="Rivera">Rivera</option>
+					<option value="Rocha">Rocha</option>
+					<option value="Salto">Salto</option>
+					<option value="San José">San José</option>
+					<option value="Soriano">Soriano</option>
+					<option value="Tacuarembó">Tacuarembó</option>
+					<option value="Treinta y Tres">Treinta y Tres</option>
+				</select>
+			</div>
+		</div>
+		<div id="success-box" *ngIf="currentScreen == 3">
+			<div *ngFor="let rif of selectedRifas.rifas"  class="rifa-container selected-rifas-container">
+				<div class="selected-numero-rifa rifa-number">{{rif.numeroRifa}}</div>
+				<div class="sorteos-selected">
+					<div *ngFor="let talon of rif.item.talones" class="selected-sorteo rifa-sorteos-small-text">Sorteo {{talon.sorteoNumero}}: USD 20</div>
+				</div>
+			</div>
+			<div id="total-pagar">TOTAL: USD {{ selectedRifas.totalPagar }}</div>
+		</div>
+		<div [class.fixed-buttons]="currentScreen == 1">
+			<div class="invalid-form" *ngIf="invalidRifas">Debes seleccionr al menos un talón*</div>
+			<div class="invalid-form" *ngIf="invalidForm">{{errorTxt}}</div>
+			<div *ngIf="currentScreen == 1" class="next-screen general-btn blue-btn left-btn" (click)="nextScreen()">
+				<div class="next-screen-text btn-text">ENVIAR LINK DE PAGO<br>AL COMPRADOR</div>
+				<div class="selected-counter">
+					Total de talones <div>{{ selectedCount }}</div>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="currentScreen == 2" class="next-screen general-btn blue-btn" (click)="generateLink()">
+			<div class="next-screen-text btn-text">ENVIAR<br>LINK DE PAGO</div>
+		</div>
+		<div *ngIf="currentScreen == 2" class="previous-screen general-btn" (click)="previousScreen()">
+			<div class="btn-text">VOLVER</div>
+		</div>
+		<div *ngIf="currentScreen == 3" class="next-screen general-btn blue-btn" (click)="volverAEnviar()">
+			<div class="next-screen-text btn-text">GENERAR OTRO<br>LINK DE PAGO</div>
+		</div>
+		
+		<!-- <a mat-icon-button color="warn" (click)="generateLink()">
+				<mat-icon>delete</mat-icon>
+		</a> -->
+	</div>
+</div>
+
+
